@@ -1076,7 +1076,6 @@ body {
   justify-content: center;
   flex-direction: column;
   transition: opacity 1s ease;
-  font-family: 'Segoe UI', sans-serif;
 }
 
 .welcome-text {
