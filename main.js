@@ -1,11 +1,11 @@
 onload = () => {
-    const c = setTimeout(() => {
-      document.body.classList.remove("not-loaded");
-      clearTimeout(c);
-    }, 1000);
-  };
-  
-  function toggleNotePopup() {
+  const c = setTimeout(() => {
+    document.body.classList.remove("not-loaded");
+    clearTimeout(c);
+  }, 1000);
+};
+
+function toggleNotePopup() {
   const overlay = document.getElementById('noteOverlay');
   const popup = document.getElementById('notePopup');
 
@@ -18,23 +18,36 @@ onload = () => {
       overlay.classList.add('hidden');
     }, 200);
   }
-};
+}
 
 window.addEventListener("DOMContentLoaded", () => {
+  const audio = document.getElementById('bgMusic');
+
+  // 1. Coba play langsung (kalau browser ngizinin)
+  if (audio && audio.paused) {
+    audio.play().catch(e => {
+      console.log("Autoplay blocked, will wait for click");
+    });
+  }
+
+  // 2. Tapi juga pasang fallback: play pas user klik pertama kali
+  window.addEventListener('click', () => {
+    if (audio && audio.paused) {
+      audio.play().catch(e => console.log("Play on click blocked:", e));
+    }
+  }, { once: true });
+
   setTimeout(() => {
     document.getElementById("welcomeScreen").classList.add("hide");
     document.body.classList.remove("not-loaded");
-  }, 3500); // 3.5 detik sebelum masuk ke halaman bunga
+  }, 3500);
 });
-;
 
 setTimeout(() => {
   document.querySelector('.welcome-screen').style.opacity = '0';
+
   setTimeout(() => {
     document.querySelector('.welcome-screen').style.display = 'none';
-    document.body.classList.remove('no-scroll'); // ✅ aktifkan scroll & layout normal
+    document.body.classList.remove('no-scroll');
   }, 1000);
 }, 3000);
-
-
-  

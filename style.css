@@ -19,6 +19,8 @@ body {
   overflow: hidden;
   perspective: 1000px;
   padding: 50px 0px;
+  font-family: 'Pacifico', cursive;
+
 }
 
 .night {
@@ -1111,6 +1113,30 @@ body {
 
 body.no-scroll {
   overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .flowers {
+    transform: scale(1.1); /* atau 1.2 kalau masih kecil */
+    transform-origin: center bottom;
+    margin-bottom: 40px;
+  }
+
+  .note-tag {
+    bottom: 20px;
+    right: 20px;
+    transform: scale(0.9);
+  }
+
+  .note-popup {
+    width: 90%;
+    font-size: 14px;
+  }
+
+  .note-content p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
